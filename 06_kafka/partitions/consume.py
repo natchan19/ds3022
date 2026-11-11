@@ -2,7 +2,7 @@
 Consumer-group demo: run ONE instance to read all 3 partitions, or run THREE
 instances with the same group name to split the partitions between them.
 
-    python consume.py <group-name>
+    python consume.py solo (or trio)
 
 Within a partition, messages for a key stay in order; across partitions they interleave.
 Ctrl+C to stop and print a summary.
@@ -11,7 +11,6 @@ import os
 import sys
 import json
 from collections import defaultdict
-
 from quixstreams import Application
 
 BROKER = os.getenv("KAFKA_BROKER", "127.0.0.1:19092,127.0.0.1:29092,127.0.0.1:39092")
