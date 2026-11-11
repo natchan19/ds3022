@@ -39,6 +39,7 @@ def on_revoke(consumer, partitions):
 
 
 with app.get_consumer() as consumer:
+    # Kafka assigns partitions here: each partition goes to exactly one consumer in the group
     consumer.subscribe([TOPIC], on_assign=on_assign, on_revoke=on_revoke)
     try:
         while True:  # run until Ctrl+C so instances can be started before the producer
